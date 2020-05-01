@@ -23,7 +23,7 @@ def predict(image_path, model, top_k):
     predictions = model.predict(np.expand_dims(processed_image, 0))
     top_predictions = tf.nn.top_k(predictions, top_k)
     to_str = np.vectorize(str)
-    return (top_predictions.values.numpy().squeeze(), to_str(top_predictions.indices.numpy().squeeze()))
+    return (top_predictions.values.numpy().squeeze(), to_str(top_predictions.indices.numpy().squeeze() + 1))
 
 
 # Parse arguments
